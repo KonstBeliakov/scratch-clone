@@ -1,11 +1,14 @@
+import threading
+
+
+def start_script(setup_script, main_loop_script):
+    t = threading.Thread(target=lambda: run_script(setup_script, main_loop_script))
+    t.start()
+
 
 def run_script(setup_script, main_loop_script):
-    print(setup_script)
-    print(main_loop_script)
     setup = setup_script
-    main_loop = [f'    {i}' for i in main_loop_script.splitlines()]
-
-    print(''.join(main_loop))
+    main_loop = [f'    {i}\n' for i in main_loop_script.splitlines()]
 
     code = f'''
 import sys
