@@ -28,14 +28,17 @@ class App(tk.Tk):
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(expand=True, fill='both')
 
-        motion_code = ['Sprite.set_position(self, x, y)', 'Sprite.move(self, steps)',
-                       'Sprite.turn(self, degrees)', 'Sprite.set_direction(self, direction)']
-        self.motion_frame = MotionFrame(self, values=motion_code)
+        self.python_frame = PythonFrame(self)
+        self.notebook.add(self.python_frame, text='Basics')
+
+        self.motion_frame = MotionFrame(self)
         self.notebook.add(self.motion_frame, text='Motion')
 
-        look_values = ['Sprite.hide(self)', 'Sprite.show(self)']
-        self.look_frame = LookFrame(self, values=look_values)
+        self.look_frame = LookFrame(self)
         self.notebook.add(self.look_frame, text='Look')
+
+        self.sensing_frame = SensingFrame(self)
+        self.notebook.add(self.sensing_frame, text='Sense')
 
     def copy_code(self, frame, line_number, to_setup=False):
         if not to_setup:

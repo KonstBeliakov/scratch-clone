@@ -10,7 +10,7 @@ class CodeFrame(ttk.Frame):
 
         self.labels = [Label(self, text=value) for value in values]
         for i, label in enumerate(self.labels):
-            label.grid(row=i, column=0)
+            label.grid(row=i, column=0, sticky=W)
 
         self.buttons = [Button(self, text='Copy') for i in range(len(values))]
         for i in range(len(self.buttons)):
